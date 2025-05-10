@@ -55,7 +55,7 @@
             }
         },
         {
-            "template":"v1",
+            "template":"v2",
             "payload":{
                 "size":"s",
                 "price":"1000",
@@ -64,7 +64,7 @@
             }
         },
         {
-            "template":"v1",
+            "template":"v2",
             "payload":{
                 "size":"m",
                 "price":"500",
@@ -73,7 +73,7 @@
             }
         },
         {
-            "template":"v1",
+            "template":"v2",
             "payload":{
                 "size":"l",
                 "price":"5000",

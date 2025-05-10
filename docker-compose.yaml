@@ -44,3 +44,10 @@ services:
         --partitions 3
         --replication-factor 1
         --config retention.ms=604800000;
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "19090:9090"

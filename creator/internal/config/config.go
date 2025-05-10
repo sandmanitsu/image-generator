@@ -10,8 +10,9 @@ import (
 )
 
 type Config struct {
-	KafkaBroker string `env:"KAFKA_BROKER" env-required:"true"`
-	KafkaTopic  string `env:"KAFKA_TOPIC" env-required:"true"`
+	KafkaBroker   string `env:"KAFKA_BROKER" env-required:"true"`
+	KafkaTopic    string `env:"KAFKA_TOPIC" env-required:"true"`
+	MetricAddress string `env:"METRICS_ADDRESS" env-required:"true"`
 }
 
 var (

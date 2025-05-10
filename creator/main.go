@@ -3,6 +3,7 @@ package main
 import (
 	"creator/internal/config"
 	"creator/internal/kafka"
+	"creator/internal/metrics"
 	image "creator/internal/service"
 	"log"
 	"os"
@@ -14,6 +15,13 @@ func main() {
 	config := config.MustLoad()
 
 	imageSrv := image.NewImageService()
+
+	go func() {
+		err := metrics.Listen(config.MetricAddress)
+		if err != nil {
+			panic(err)
+		}
+	}()
 
 	kafka.StartConsumer(config, imageSrv)
 

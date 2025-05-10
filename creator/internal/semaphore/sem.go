@@ -10,10 +10,10 @@ func NewSemaphore(maxConc int) Semaphore {
 	}
 }
 
-func (s Semaphore) Acquire() {
+func (s *Semaphore) Acquire() {
 	s.sem <- struct{}{}
 }
 
-func (s Semaphore) Release() {
+func (s *Semaphore) Release() {
 	<-s.sem
 }

@@ -41,12 +41,15 @@ func StartConsumer(cfg *config.Config, imageSrv ImageService) {
 			}
 
 			sem.Acquire()
-			go func() {
-				imageSrv.ProcessImages(string(m.Key), m.Value)
-				sem.Release()
-			}()
+			go func(msg kafka.Message) {
+				defer sem.Release()
 
-			// fmt.Println(string(m.Key), string(m.Value))
+				imageSrv.ProcessImages(string(msg.Key), msg.Value)
+			}(m)
+
+			// if err = r.CommitMessages(ctx, m); err != nil {
+			// 	log.Println("error commit message", err)
+			// }
 		}
 	}()
 }

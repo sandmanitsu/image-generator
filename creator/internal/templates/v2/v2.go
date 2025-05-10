@@ -1,4 +1,4 @@
-package v1
+package v2
 
 import (
 	"creator/internal/templates"
@@ -11,13 +11,15 @@ import (
 )
 
 const (
-	templateName = "v1"
+	templateName = "v2"
 
 	weight = 1000
 	height = 1000
 
 	imgW = 600
 	imgH = 600
+
+	backgroundColor = "#ffd663"
 )
 
 type Param struct {
@@ -45,7 +47,7 @@ func Process(payload []byte) {
 
 	bc := imagick.NewPixelWand()
 	defer bc.Destroy()
-	bc.SetColor("white")
+	bc.SetColor(backgroundColor)
 	mw.NewImage(weight, height, bc)
 
 	// main image
