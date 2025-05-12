@@ -10,9 +10,10 @@ import (
 )
 
 var templateMetrics = promauto.NewSummaryVec(prometheus.SummaryOpts{
-	Namespace: "image",
-	Subsystem: "kafka",
-	Name:      "message",
+	Namespace:  "image",
+	Subsystem:  "kafka",
+	Name:       "message",
+	Objectives: map[float64]float64{0.5: 0.05, 0.9: 0.01, 0.99: 0.001},
 }, []string{"template"})
 
 func ObserveCreateImage(d time.Duration, template string) {

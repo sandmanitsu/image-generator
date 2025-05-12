@@ -6,6 +6,7 @@ import (
 	v2 "creator/internal/templates/v2"
 	"fmt"
 	"log"
+	"math/rand/v2"
 	"time"
 )
 
@@ -32,4 +33,7 @@ func (i *ImageService) ProcessImages(template string, payload []byte) {
 	default:
 		log.Println("template doesn't exist", template)
 	}
+
+	// !request timing test
+	time.Sleep(time.Duration(rand.IntN(2000)) * time.Millisecond)
 }
